@@ -9,7 +9,7 @@ const require = createRequire(import.meta.url);
 const router = express.Router();
 
 // This section will help you get a list of all the records.
-router.get("/", async (req, res) => {
+router.get("/get-users", async (req, res) => {
     console.log("Testing")
     let collection = await db.collection("users");
     let results = await collection.find({}).toArray();
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
 });
 
 // This section will help you get a single record by id
-router.get("/:id", async (req, res) => {
+router.get("/get-users/:id", async (req, res) => {
     let collection = await db.collection("users");
     let query = { _id: new ObjectId(req.params.id) };
     let result = await collection.findOne(query);
@@ -30,7 +30,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // This section will help you create a new record.
-router.post("/", async (req, res) => {
+router.post("/new-user", async (req, res) => {
     let newDocument = {
         name: req.body.name,
         username: req.body.username,
@@ -75,7 +75,7 @@ router.delete("/:id", async (req, res) => {
 // *********** RESTAURANT COLLECTION ******************
 
 // This section will help you get a list of all the records.
-router.get("/", async (req, res) => {
+router.get("/get-restaurants", async (req, res) => {
     console.log("Testing")
     let collection = await db.collection("restaurants");
     let results = await collection.find({}).toArray();
@@ -86,7 +86,7 @@ router.get("/", async (req, res) => {
 });
 
 // This section will help you get a single record by id
-router.get("/:id", async (req, res) => {
+router.get("/get-restaurants/:id", async (req, res) => {
     let collection = await db.collection("restaurants");
     let query = { _id: new ObjectId(req.params.id) };
     let result = await collection.findOne(query);
