@@ -45,18 +45,36 @@ router.post("/new-user", async (req, res) => {
 });
 
 // This section will help you update a record by id.
-router.patch("/:id", async (req, res) => {
-    const query = { _id: new ObjectId(req.params.id) };
-    const updates = {
-        $set: {
-            name: req.body.name,
-            position: req.body.position,
-            level: req.body.level
-        }
-    };
+router.patch("/get-users/:username/:field", async (req, res) => {
+    // const query = { _id: new ObjectId(req.params.id) };
+    const query = { username: req.params.username };
+    let updates;
+    if (req.params.field === "friends") {
+        updates = {
+            $push: {
+                friends: req.body.friends
+            }
+        };
+    }
 
-    let collection = await db.collection("records");
-    let result = await collection.updateOne(query, updates);
+    if (req.params.field === "recommendations") {
+        updates = {
+            $push: {
+                recommendations: req.body.recommendations
+            }
+        };
+    }
+
+    if (req.params.field === "savedList") {
+        updates = {
+            $push: {
+                savedList: req.body.savedList
+            }
+        };
+    }
+
+    let collection = await db.collection("users");
+    let result = await collection.updateMany(query, updates);
 
     res.send(result).status(200);
 });
