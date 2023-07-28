@@ -45,63 +45,37 @@ router.post("/new-user", async (req, res) => {
 });
 
 // This section will help you update a record by id.
-router.patch("/get-users/:username/:field/:modify", async (req, res) => {
-    // const query = { _id: new ObjectId(req.params.id) };
+router.patch("/get-users/:username/:field", async (req, res) => {
     const query = { username: req.params.username };
     let updates;
     if (req.params.field === "friends") {
-        if (req.params.modify === "add") {
-            updates = {
-                $push: {
-                    friends: req.body
-                }
-            };
-        }
-        else if (req.params.modify == "delete") {
-            updates = {
-                $pull: {
-                    friends: req.body
-                }
-            };
-        }
+        updates = {
+            $push: {
+                friends: req.body.friends
+            }
+        };
     }
 
     if (req.params.field === "recommendations") {
-        if (req.params.modify === "add") {
-            updates = {
-                $push: {
-                    recommendations: req.body
-                }
-            };
-        }
-        else if (req.params.modify == "delete") {
-            updates = {
-                $pull: {
-                    recommendations: req.body
-                }
-            };
-        }
+        updates = {
+            $push: {
+                recommendations: req.body.recommendations
+            }
+        };
     }
 
     if (req.params.field === "savedList") {
-        if (req.params.modify === "add") {
-            updates = {
-                $push: {
-                    savedList: req.body
-                }
-            };
-        }
-        else if (req.params.modify == "delete") {
-            updates = {
-                $pull: {
-                    savedList: req.body
-                }
-            };
-        }
+        updates = {
+            $push: {
+                savedList: req.body.savedList
+            }
+        };
     }
 
     let collection = await db.collection("users");
     let result = await collection.updateMany(query, updates);
+    console.log("THIS IS COLLECTION", collection);
+    console.log("THIS IS RESULT", result)
 
     res.send(result).status(200);
 });
