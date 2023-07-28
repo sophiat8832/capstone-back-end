@@ -53,14 +53,14 @@ router.patch("/get-users/:username/:field/:modify", async (req, res) => {
         if (req.params.modify === "add") {
             updates = {
                 $push: {
-                    friends: req.body
+                    friends: req.body.friends
                 }
             };
         }
         else if (req.params.modify == "delete") {
             updates = {
                 $pull: {
-                    friends: req.body
+                    friends: req.body.friends
                 }
             };
         }
@@ -70,14 +70,14 @@ router.patch("/get-users/:username/:field/:modify", async (req, res) => {
         if (req.params.modify === "add") {
             updates = {
                 $push: {
-                    recommendations: req.body
+                    recommendations: req.body.recommendations
                 }
             };
         }
         else if (req.params.modify == "delete") {
             updates = {
                 $pull: {
-                    recommendations: req.body
+                    recommendations: req.body.recommendations
                 }
             };
         }
