@@ -87,14 +87,14 @@ router.patch("/get-users/:username/:field/:modify", async (req, res) => {
         if (req.params.modify === "add") {
             updates = {
                 $push: {
-                    savedList: req.body
+                    savedList: req.body.savedList
                 }
             };
         }
         else if (req.params.modify == "delete") {
             updates = {
                 $pull: {
-                    savedList: req.body
+                    savedList: req.body.savedList
                 }
             };
         }
