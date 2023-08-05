@@ -4,8 +4,6 @@ import { ObjectId } from "mongodb";
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
-
-
 const router = express.Router();
 
 // This section will help you get a list of all the records.
@@ -34,7 +32,6 @@ router.post("/new-user", async (req, res) => {
     let newDocument = {
         name: req.body.name,
         username: req.body.username,
-        password: req.body.password,
         friends: [],
         recommendations: [],
         savedList: []
