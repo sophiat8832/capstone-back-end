@@ -1,15 +1,20 @@
-import express from "express";
-import db from "../db/conn.mjs";
-import { ObjectId } from "mongodb";
-import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
+// import express from "express";
+// import db from "../db/conn.js";
+// import { ObjectId } from "mongodb";
+// import { createRequire } from 'module';
+// const require = createRequire(import.meta.url);
+
+const express = require("express");
+const conn = require("../db/conn");
+const mongodb = require("mongodb");
+const { ObjectId } = mongodb;
 
 const router = express.Router();
 
 // This section will help you get a list of all the records.
 router.get("/get-users", async (req, res) => {
     console.log("Testing")
-    let collection = await db.collection("users");
+    let collection = await conn.db.collection("users");
     let results = await collection.find({}).toArray();
 
     console.log("THIS IS COLLECTION", collection)
@@ -140,28 +145,28 @@ router.get("/get-restaurants/:id", async (req, res) => {
 });
 
 // This section will help you create a new record.
-router.post("/new-restaurant", async (req, res) => {
+// router.post("/new-restaurant", async (req, res) => {
 
-    const YELP_API = process.env.YELP_API_KEY;
-    const sdk = require('api')('@yelp-developers/v1.0#29blk6qj5xa');
-    sdk.auth(`Bearer ${YELP_API}`);
+//     const YELP_API = process.env.YELP_API_KEY;
+//     const sdk = require('api')('@yelp-developers/v1.0#29blk6qj5xa');
+//     sdk.auth(`Bearer ${YELP_API}`);
 
-    let searchRestaurant = {
-        location: req.body.location,
-        term: req.body.term,
-    };
+//     let searchRestaurant = {
+//         location: req.body.location,
+//         term: req.body.term,
+//     };
 
-    sdk.v3_business_search(searchRestaurant)
-        .then(({ data }) => {
-            let collection = db.collection("restaurants");
-            let result = collection.insertOne(data.businesses[0]);
-            res.send(data.businesses[0]).status(204);
-        })
-        .catch(err => {
-            console.error(err);
-            res.send("Error occurred while fetching restaurant data").status(500);
-        });
-});
+//     sdk.v3_business_search(searchRestaurant)
+//         .then(({ data }) => {
+//             let collection = db.collection("restaurants");
+//             let result = collection.insertOne(data.businesses[0]);
+//             res.send(data.businesses[0]).status(204);
+//         })
+//         .catch(err => {
+//             console.error(err);
+//             res.send("Error occurred while fetching restaurant data").status(500);
+//         });
+// });
 
 // This section will help you update a record by id.
 router.patch("/:id", async (req, res) => {
@@ -190,4 +195,5 @@ router.delete("/:id", async (req, res) => {
     res.send(result).status(200);
 });
 
-export default router;
+// export default router;
+module.exports = router;
