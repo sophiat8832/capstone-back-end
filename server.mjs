@@ -2,7 +2,9 @@ import express from "express";
 import cors from "cors";
 import "./loadEnvironment.mjs";
 import records from "./routes/record.mjs";
-const job = require('~/cron.js');
+import * as job from '~/cron.js';
+
+
 
 job.start();
 
