@@ -1,5 +1,5 @@
-const cron = require('cron');
-const https = require('https');
+import cron from 'cron';
+import https from 'https';
 
 const backendURL = 'https://restaurant-rec-api-back-end.onrender.com/record';
 const job = new cron.CronJob('*/14 * * * *', function () {
