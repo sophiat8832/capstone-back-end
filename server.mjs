@@ -2,7 +2,7 @@ import express from "express";
 import cors from "cors";
 import "./loadEnvironment.mjs";
 import records from "./routes/record.mjs";
-import * as job from '~/cron.js';
+import * as job from './cron.js';
 
 
 
