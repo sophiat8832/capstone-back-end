@@ -1,5 +1,3 @@
-# capstone-back-end
-
 # Table of Contents:
  - [Introduction](#intro)
  - [Live Website](#website)
@@ -47,6 +45,7 @@ Sophia and Lily love to eat. But, they sometimes end up in a bit of a dilemma wh
 4. Generate Yelp API Key
    Make an account from [Yelp Fusion API](https://docs.developer.yelp.com/docs/fusion-intro) to get your private API key.
    <p>Create a .env file in your project root directory and add 'YELP_API_KEY = insert_your_yelp_fusion_API_key'.</p>
+5. Contact one of the developers to receive your unique Mongodb Atlas URI key to access the database for this project.
    
 
  <a id="contact"></a>
