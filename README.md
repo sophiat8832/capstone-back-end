@@ -1,5 +1,6 @@
 # Table of Contents:
  - [Introduction](#intro)
+ - [Frontend Repository](#frontend)
  - [Live Website](#website)
  - [Tech Stack](#tech-stack)
  - [Demo Video](#demo)
@@ -7,9 +8,14 @@
  - [Contact](#contact)
  
  <!-- headings -->
+
  <a id="intro"></a>
  ### Introduction
 Sophia and Lily love to eat. But, they sometimes end up in a bit of a dilemma when it comes to picking where to eat. Although Yelp and Google offer a useful starting point, relying solely on the opinions of strangers doesn't always make it easier. Sophia and Lily believe that the best recommendations come from friends, not total strangers. That's why they built this site.
+
+<a id="frontend"></a>
+ ### Frontend Repository
+ Checkout our frontend repository [HERE](https://github.com/liau11/front-end-capstone)
 
  <a id="website"></a>
  ### Live Website
