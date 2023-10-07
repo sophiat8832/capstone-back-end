@@ -1,4 +1,6 @@
-# Table of Contents:
+# FoodSteps
+
+## Table of Contents:
  - [Introduction](#intro)
  - [Frontend Repository](#frontend)
  - [Live Website](#website)
