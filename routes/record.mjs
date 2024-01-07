@@ -8,12 +8,9 @@ const router = express.Router();
 
 // This section will help you get a list of all the records.
 router.get("/get-users", async (req, res) => {
-    console.log("Testing")
     let collection = await db.collection("users");
     let results = await collection.find({}).toArray();
-
-    console.log("THIS IS COLLECTION", collection)
-    console.log("THIS IS RESULTS", results)
+    
     res.send(results).status(200);
 });
 
@@ -99,8 +96,6 @@ router.patch("/get-users/:username/:field/:modify", async (req, res) => {
 
     let collection = await db.collection("users");
     let result = await collection.updateMany(query, updates);
-    console.log("THIS IS COLLECTION", collection)
-    console.log("THIS IS RESULT", result)
 
     res.send(result).status(200);
 });
@@ -120,12 +115,9 @@ router.delete("/:id", async (req, res) => {
 
 // This section will help you get a list of all the records.
 router.get("/get-restaurants", async (req, res) => {
-    console.log("Testing")
     let collection = await db.collection("restaurants");
     let results = await collection.find({}).toArray();
 
-    console.log("THIS IS COLLECTION", collection)
-    console.log("THIS IS RESULTS", results)
     res.send(results).status(200);
 });
 
